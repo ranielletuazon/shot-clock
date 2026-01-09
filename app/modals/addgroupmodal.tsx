@@ -191,14 +191,23 @@ export default function AddGroupModal({
                 style={{ opacity: fadeAnim }}
                 className="flex-1 bg-black/60 justify-end"
             >
-                {/* Modal Card */}
-                <View className="bg-slate-900 rounded-t-3xl p-6 max-h-[85%]">
+                {/* Modal Card - Fixed height container */}
+                <View className="bg-slate-900 rounded-t-3xl pt-6">
                     {/* Header */}
-                    <Text className="text-white text-2xl font-bold mb-4">
+                    <Text className="text-white text-2xl font-bold mb-4 px-6">
                         Add Group
                     </Text>
 
-                    <ScrollView showsVerticalScrollIndicator={false}>
+                    {/* Scrollable Content - with max height */}
+                    <ScrollView
+                        showsVerticalScrollIndicator={false}
+                        style={{ maxHeight: 500 }}
+                        contentContainerStyle={{
+                            paddingHorizontal: 24,
+                            paddingBottom: 24,
+                        }}
+                        keyboardShouldPersistTaps="handled"
+                    >
                         {/* Group Name */}
                         <View className="mb-6">
                             <Text className="text-slate-300 mb-2">
@@ -260,7 +269,7 @@ export default function AddGroupModal({
                         </View>
 
                         {/* Settings */}
-                        <View className="mb-6">
+                        <View className="mb-6 flex flex-col">
                             <Text className="text-slate-300 mb-3">
                                 Settings
                             </Text>
@@ -328,8 +337,8 @@ export default function AddGroupModal({
                         </View>
                     </ScrollView>
 
-                    {/* Actions */}
-                    <View className="flex-row gap-4 mt-4">
+                    {/* Footer Actions - Fixed at bottom */}
+                    <View className="flex-row gap-4 px-6 pb-6 pt-4 border-t border-slate-800">
                         <Pressable
                             onPress={onClose}
                             className="flex-1 bg-slate-700 py-4 rounded-xl items-center"
